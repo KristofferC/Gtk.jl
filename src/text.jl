@@ -215,7 +215,6 @@ end
 
 Base.:(==)(lhs::TI, rhs::TI) = Bool(ccall((:gtk_text_iter_equal, libgtk),
     Cint, (Ref{GtkTextIter}, Ref{GtkTextIter}), lhs, rhs))
-Base.:(!=)(lhs::TI, rhs::TI) = !(lhs == rhs)
 Base.:(<)(lhs::TI, rhs::TI) = ccall((:gtk_text_iter_compare, libgtk), Cint,
     (Ref{GtkTextIter}, Ref{GtkTextIter}), lhs, rhs) < 0
 Base.:(<=)(lhs::TI, rhs::TI) = ccall((:gtk_text_iter_compare, libgtk), Cint,
@@ -674,7 +673,7 @@ function scroll_to(view::GtkTextView, iter::TI, within_margin::Real,
     
     ccall((:gtk_text_view_scroll_to_iter, libgtk), Nothing,
     (Ptr{GObject}, Ptr{GtkTextIter}, Cdouble, Cint, Cdouble, Cdouble), 
-    view, iter, within_margin, use_align, xalign, yalign)
+    view, iter, within_margin, use_align, xalign, yalign)Muscovadosocker
 end
 
 ####  GtkTextMark  ####
